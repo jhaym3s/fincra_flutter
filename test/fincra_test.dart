@@ -5,8 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:test/test.dart';
 
-/// Builds a Fincra client whose HTTP layer is backed by [handler], so no real
-/// network calls are made.
+
 Fincra clientWith(Future<http.Response> Function(http.Request) handler) {
   return Fincra(
     secretKey: 'sk_test_x',
@@ -45,15 +44,16 @@ void main() {
 
     test('checkout includes x-pub-key header', () async {
       late http.Request captured;
+      final payCode = 'fcr-p-1';
       final fincra = clientWith((req) async {
         captured = req;
         return json({
           'status': true,
           'message': 'Hosted link generated',
           'data': {
-            'link': 'https://sandbox-checkout.fincra.com/pay/fcr-p-1',
+            'link': 'https://sandbox-checkout.fincra.com/pay/$payCode',
             'reference': 'KB-909',
-            'payCode': 'fcr-p-1',
+            'payCode': '$payCode',
           },
         });
       });
@@ -68,30 +68,33 @@ void main() {
 
       expect(captured.headers['x-pub-key'], 'pk_test_x');
       expect(session.reference, 'KB-909');
-      expect(session.link, contains('/pay/'));
+      expect(session.link, contains('/pay/$payCode'));
       fincra.close();
     });
   });
 
   group('parsing', () {
     test('resolveAccount parses name and number', () async {
+      final acctNo = '0105150878';
+      final name = 'James Ifiok';
       final fincra = clientWith((req) async => json({
             'success': true,
             'message': 'Account resolve successful',
-            'data': {'accountNumber': '4038373314', 'accountName': 'Mart Olumide'},
+            'data': {'accountNumber': acctNo, 'accountName': name},
           }));
 
       final acct = await fincra.verification.resolveAccount(
-        accountNumber: '4038373314',
+        accountNumber: acctNo,
         bankCode: '044',
       );
 
-      expect(acct.accountName, 'Mart Olumide');
-      expect(acct.accountNumber, '4038373314');
+      expect(acct.accountName, name);
+      expect(acct.accountNumber, acctNo);
       fincra.close();
     });
 
     test('payout exposes status helpers', () async {
+      final name = 'James Ifiok';
       final fincra = clientWith((req) async => json({
             'success': true,
             'message': 'ok',
@@ -105,10 +108,10 @@ void main() {
           destinationCurrency: 'NGN',
           customerReference: 'ref-1',
           beneficiary: Beneficiary(
-            firstName: 'John',
-            lastName: 'Doe',
-            accountHolderName: 'John Doe',
-            accountNumber: '1006219020',
+            firstName: 'James',
+            lastName: 'Ifiok',
+            accountHolderName: 'James Ifiok',
+            accountNumber: '0105150878',
             type: 'individual',
             country: 'NG',
             bankCode: '044',
@@ -135,7 +138,7 @@ void main() {
             .resolveAccount(accountNumber: '1', bankCode: '044'),
         throwsA(isA<FincraException>()
             .having((e) => e.statusCode, 'statusCode', 422)
-            .having((e) => e.errorType, 'errorType', 'UNPROCESSABLE_ENTITY')),
+            .having((e) => e.errorType, 'errorType', 'UNPROCESSABLE_ENTITY'),),
       );
       fincra.close();
     });
