@@ -1,17 +1,10 @@
 import '../models/bank.dart';
 import 'base_service.dart';
 
-/// Lists banks and mobile money operators.
-///
-/// Accessed via `fincra.banks`.
+
 class BanksService extends BaseService {
   const BanksService(super.client);
 
-  /// Returns the banks/mobile money operators available for [currency] in
-  /// [country]. The returned `code` is what you pass as `bankCode` when
-  /// building a [Beneficiary] for a payout.
-  ///
-  /// `GET /core/banks?currency=NGN&country=NG`
   Future<List<Bank>> list({
     String currency = 'NGN',
     String country = 'NG',

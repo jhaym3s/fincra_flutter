@@ -22,10 +22,6 @@ class FincraDemoApp extends StatelessWidget {
   }
 }
 
-/// Collects sandbox credentials and constructs the [Fincra] client.
-///
-/// In a real app you would not type your secret key into the UI — see the
-/// security note in the SDK README. This is a sandbox convenience.
 class SetupScreen extends StatefulWidget {
   const SetupScreen({super.key});
 
@@ -89,7 +85,7 @@ class _SetupScreenState extends State<SetupScreen> {
           TextField(
             controller: _public,
             decoration: const InputDecoration(
-              labelText: 'Public key (x-pub-key) — needed for checkout',
+              labelText: 'Public key (x-pub-key)',
               border: OutlineInputBorder(),
             ),
           ),
@@ -103,12 +99,7 @@ class _SetupScreenState extends State<SetupScreen> {
           ),
           const SizedBox(height: 24),
           FilledButton(onPressed: _start, child: const Text('Continue')),
-          const SizedBox(height: 16),
-          const Text(
-            'Tip: your sandbox keys are on the Fincra dashboard under '
-            'Settings → API keys.',
-            style: TextStyle(color: Colors.black54),
-          ),
+        
         ],
       ),
     );

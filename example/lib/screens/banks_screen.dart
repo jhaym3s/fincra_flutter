@@ -1,7 +1,6 @@
 import 'package:fincra_flutter/fincra_flutter.dart';
 import 'package:flutter/material.dart';
 
-/// Demonstrates `fincra.banks.list()`.
 class BanksScreen extends StatefulWidget {
   const BanksScreen({super.key, required this.fincra});
   final Fincra fincra;
@@ -50,7 +49,6 @@ class _BanksScreenState extends State<BanksScreen> {
   }
 }
 
-/// Shared widget for rendering a [FincraException] (or any error) nicely.
 class _ErrorView extends StatelessWidget {
   const _ErrorView({required this.error});
   final Object error;

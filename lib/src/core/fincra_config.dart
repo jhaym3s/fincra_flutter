@@ -2,17 +2,7 @@ import 'package:meta/meta.dart';
 
 import 'fincra_environment.dart';
 
-/// Immutable configuration for a [Fincra] client.
-///
-/// Fincra authenticates requests with your **secret key** sent in the
-/// `api-key` header. Some endpoints (notably checkout) also accept a
-/// **public key** in `x-pub-key` and the parent **business id** in
-/// `x-business-id`.
-///
-/// The secret key grants full access to your account, so it must never be
-/// embedded in a shipped mobile binary. In production, route privileged calls
-/// (payouts, wallet balances, etc.) through your own backend and only keep the
-/// public key on the device. See the README for the recommended split.
+
 @immutable
 class FincraConfig {
   const FincraConfig({

@@ -1,11 +1,4 @@
-/// A typed wrapper around Fincra's standard success envelope.
-///
-/// Fincra responses are shaped like:
-/// ```json
-/// { "success": true, "message": "...", "data": { ... } }
-/// ```
-/// (checkout uses `status` instead of `success`). [data] is the parsed
-/// payload of type [T].
+
 class FincraResponse<T> {
   const FincraResponse({
     required this.success,
@@ -17,7 +10,6 @@ class FincraResponse<T> {
   final String message;
   final T data;
 
-  /// Parses an envelope, mapping the `data` field with [fromData].
   factory FincraResponse.fromEnvelope(
     Map<String, dynamic> body,
     T Function(dynamic data) fromData,

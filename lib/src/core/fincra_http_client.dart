@@ -7,16 +7,7 @@ import 'package:meta/meta.dart';
 import 'fincra_config.dart';
 import 'fincra_exception.dart';
 
-/// Thin HTTP layer used by every service.
-///
-/// Responsibilities:
-/// * attach the auth headers Fincra expects (`api-key`, optionally
-///   `x-pub-key` and `x-business-id`),
-/// * encode/decode JSON,
-/// * turn non-2xx responses (and transport failures) into [FincraException].
-///
-/// Services never touch `dart:io`/`http` directly; they go through here so
-/// auth, timeouts and error handling stay in one place.
+
 class FincraHttpClient {
   FincraHttpClient(this._config, {http.Client? httpClient})
       : _client = httpClient ?? http.Client();
@@ -24,8 +15,6 @@ class FincraHttpClient {
   final FincraConfig _config;
   final http.Client _client;
 
-  /// Headers attached to every request. [includePublicKey] adds `x-pub-key`,
-  /// used by endpoints like checkout that accept the public key.
   @visibleForTesting
   Map<String, String> buildHeaders({bool includePublicKey = false}) {
     final headers = <String, String>{
