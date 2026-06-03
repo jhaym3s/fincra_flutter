@@ -1,0 +1,21 @@
+name: fincra_example
+description: Sample app demonstrating the fincra_flutter SDK.
+publish_to: none
+version: 1.0.0
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  url_launcher: ^6.2.0
+  fincra_flutter:
+    path: ../
+
+dev_dependencies:
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
