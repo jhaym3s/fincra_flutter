@@ -1,0 +1,20 @@
+name: fincra_flutter
+description: >-
+  An unofficial Flutter/Dart SDK for the Fincra payment infrastructure API:
+  collections (checkout), payouts (disbursements), account verification,
+  bank listing and wallet balances.
+version: 0.1.0
+homepage: https://github.com/your-org/fincra_flutter
+repository: https://github.com/your-org/fincra_flutter
+issue_tracker: https://github.com/your-org/fincra_flutter/issues
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  http: ^1.2.0
+  meta: ^1.11.0
+
+dev_dependencies:
+  lints: ^4.0.0
+  test: ^1.25.0
