@@ -13,22 +13,20 @@ class FincraConfig {
     this.timeout = const Duration(seconds: 30),
   });
 
-  /// Secret API key, sent as the `api-key` header.
   final String secretKey;
 
-  /// Public API key, sent as the `x-pub-key` header where supported.
   final String? publicKey;
 
-  /// Parent business id, required by some endpoints (e.g. payouts, checkout).
   final String? businessId;
 
-  /// Which Fincra environment to target. Defaults to [FincraEnvironment.sandbox].
+  /// environment to target. Defaults to [FincraEnvironment.sandbox].
   final FincraEnvironment environment;
 
   /// Per-request network timeout.
   final Duration timeout;
 
   /// Base URL derived from [environment].
+  /// provide from remote config
   String get baseUrl => environment.baseUrl;
 
   FincraConfig copyWith({

@@ -8,6 +8,6 @@ enum FincraEnvironment {
 
   const FincraEnvironment(this.baseUrl);
 
-  /// The root URL for this environment, without a trailing slash.
+  /// The root URL for this environment.
   final String baseUrl;
 }

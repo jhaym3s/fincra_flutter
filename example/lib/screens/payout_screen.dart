@@ -1,11 +1,7 @@
 import 'package:fincra_flutter/fincra_flutter.dart';
 import 'package:flutter/material.dart';
 
-/// Demonstrates `fincra.payouts.initiate()`.
-///
-/// Mirrors a real flow: pick a bank, resolve the account to confirm the name,
-/// then disburse. Requires a business id configured on the client (or set in
-/// the request) and a funded sandbox balance.
+
 class PayoutScreen extends StatefulWidget {
   const PayoutScreen({super.key, required this.fincra});
   final Fincra fincra;

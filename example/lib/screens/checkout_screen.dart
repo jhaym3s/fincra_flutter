@@ -2,11 +2,7 @@ import 'package:fincra_flutter/fincra_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-/// Demonstrates `fincra.checkout.initiate()`.
-///
-/// Builds a [CheckoutRequest], gets a hosted link, and opens it in the
-/// browser. After paying you would confirm the result via webhook or
-/// `fincra.checkout.verify(reference)`.
+
 class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({super.key, required this.fincra});
   final Fincra fincra;
@@ -17,8 +13,8 @@ class CheckoutScreen extends StatefulWidget {
 
 class _CheckoutScreenState extends State<CheckoutScreen> {
   final _amount = TextEditingController(text: '1500');
-  final _name = TextEditingController(text: 'Ada Lovelace');
-  final _email = TextEditingController(text: 'ada@example.com');
+  final _name = TextEditingController(text: 'James Ifiok');
+  final _email = TextEditingController(text: 'chizoba@example.com');
   CheckoutSession? _session;
   String? _error;
   bool _loading = false;

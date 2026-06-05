@@ -6,8 +6,6 @@ import 'checkout_screen.dart';
 import 'payout_screen.dart';
 import 'resolve_screen.dart';
 
-/// Menu of the SDK flows the demo covers. Each tile passes the shared
-/// [Fincra] client down to a focused screen.
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key, required this.fincra});
 
