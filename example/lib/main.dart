@@ -77,7 +77,7 @@ class _SetupScreenState extends State<SetupScreen> {
             controller: _secret,
             obscureText: true,
             decoration: const InputDecoration(
-              labelText: 'Secret key (api-key)',
+              labelText: 'Secret key',
               border: OutlineInputBorder(),
             ),
           ),
@@ -85,7 +85,7 @@ class _SetupScreenState extends State<SetupScreen> {
           TextField(
             controller: _public,
             decoration: const InputDecoration(
-              labelText: 'Public key (x-pub-key)',
+              labelText: 'Public key',
               border: OutlineInputBorder(),
             ),
           ),
