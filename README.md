@@ -9,6 +9,7 @@ infrastructure API. It wraps the endpoints most apps need:
 - **Banks** — list banks & mobile money operators (`/core/banks`)
 - **Wallets** — balances and business profile
 
+> Disclaimer
 > Not affiliated with or endorsed by Fincra. Endpoint shapes follow the public
 > Fincra API docs at the time of writing.
 
@@ -69,24 +70,3 @@ final payout = await fincra.payouts.initiate(
 );
 print(payout.status);
 ```
-
-
-
-##  Security: keep your secret key off the device
-
-The *secret key* grants full access to your Fincra account. Anyone who
-extracts it from a shipped app binary can move your money. 
-
-## For production:
-
-- Keep only the *public key* on the device (it is safe to ship).
-- Run payouts, balance checks and account resolution on *your own backend*,
-  which holds the secret key, and have the app call your backend.
-- Sandbox keys are fine to use directly while developing.
-
-Treat the direct-from-app usage shown here and in `example/` as a sandbox
-convenience, not a production architecture.
-
-## License
-
-MIT
