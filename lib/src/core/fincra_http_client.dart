@@ -48,8 +48,8 @@ class FincraHttpClient {
   }) {
     return _send(() => _client
         .get(_uri(path, query),
-            headers: buildHeaders(includePublicKey: includePublicKey))
-        .timeout(_config.timeout));
+            headers: buildHeaders(includePublicKey: includePublicKey),)
+        .timeout(_config.timeout),);
   }
 
   Future<Map<String, dynamic>> post(
